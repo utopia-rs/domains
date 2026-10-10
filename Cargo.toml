@@ -1,11 +1,29 @@
 [package]
 name = "utopia-domains"
-description = "Domain names, checked against the Public Suffix List."
+description = "Domain names split against the Public Suffix List, domain validators, and registrar clients for availability, prices, purchases, renewals and transfers."
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.88"
 license = "BSD-3-Clause"
 
 [dependencies]
+bytes = "1"
+getrandom = "0.3"
+http-body-util = "0.1"
+hyper = { version = "1", features = ["server", "http1", "client"] }
+hyper-rustls = { version = "0.27", default-features = false, features = ["http1", "ring", "tls12", "webpki-roots"] }
+hyper-util = { version = "0.1", features = ["tokio", "client-legacy", "http1"] }
+indexmap = "2"
 php-std = { version = "0.1.0", git = "https://github.com/utopia-rs/php-std" }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+serde_json = { version = "1", features = ["raw_value", "preserve_order", "float_roundtrip"] }
 thiserror = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "time", "sync", "signal"] }
+utopia-validators = { version = "0.1.0", git = "https://github.com/utopia-rs/validators" }
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "time", "sync", "signal"] }
+
+[package.metadata.utopia]
+category = "networking"
+php-sync = "da0119eda7c139b8f99b13d814e5a99f9b5ac418"
